@@ -1,6 +1,8 @@
 require "iptcr/version"
 
 module IPTCR
+  class Malformed < RuntimeError; end
+
   def self.parse(value, length: nil)
     if value.is_a? String
       require "stringio"

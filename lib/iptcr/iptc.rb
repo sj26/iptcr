@@ -2,8 +2,6 @@ require "iptcr"
 require "iptcr/records"
 
 module IPTCR
-  class Malformed < RuntimeError; end
-
   # # IPTC
   #
   # ## Notes
