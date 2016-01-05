@@ -94,7 +94,7 @@ module IPTCR
         when "\x1b%G"
           @encoding = Encoding::UTF_8
         else
-          EXIFR.logger.warn { "IPTC: Unknown codec character set: #{field.value.inspect}" }
+          warn "IPTC: Unknown encoding: #{field.value.inspect}, using default #{encoding}"
         end
       end
 
