@@ -176,10 +176,10 @@ module IPTCR
         when "string"
           # Record number 1 is always the default encoding
           if record_number == 1
-            @data.force_encoding(DEFAULT_ENCODING)
+            @data.force_encoding(DEFAULT_ENCODING) unless @data.nil?
           # Records 2-6 and 8 respect tagged encoding
           elsif (2..6).include?(record_number) || record_number == 8
-            @data.force_encoding(encoding)
+            @data.force_encoding(encoding) unless @data.nil?
           # Other behaviour is undefined
           else
             @data
