@@ -83,6 +83,12 @@ class IPTCTest < Minitest::Test
     assert_equal("☃".force_encoding("UTF-8"), iptc["ObjectName"])
   end
 
+  def test_iptc_default_encoding_string
+    iptc = IPTCR.parse("\x1c\x02\x05\x00\x01\x80".b, default_encoding: "windows-1252")
+    assert_equal(Encoding::Windows_1252, iptc["ObjectName"].encoding)
+    assert_equal("€", iptc["ObjectName"].encode("utf-8"))
+  end
+
   def test_iptc_string_list
     iptc = IPTCR.parse("\x1c\x01\x05\x00\x05Hello\x1c\x01\x05\x00\x05World".b)
     assert_equal(2, iptc.fields.size)

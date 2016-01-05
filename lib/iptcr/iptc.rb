@@ -22,7 +22,8 @@ module IPTCR
     # IPTC IIM specifics the default encoding is ISO646/4873, which is roughly ASCII
     DEFAULT_ENCODING = Encoding::ASCII
 
-    def initialize(io, length:)
+    def initialize(io, length: nil, default_encoding: nil)
+      @encoding = default_encoding
       @fields = []
       read_fields(io, length: length)
     end

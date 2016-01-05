@@ -3,13 +3,13 @@ require "iptcr/version"
 module IPTCR
   class Malformed < RuntimeError; end
 
-  def self.parse(value, length: nil)
+  def self.parse(value, length: nil, **kwargs)
     if value.is_a? String
       require "stringio"
       length ||= value.bytesize
-      IPTC.new(StringIO.new(value), length: length)
+      IPTC.new(StringIO.new(value), length: length, **kwargs)
     else
-      IPTC.new(value, length: length)
+      IPTC.new(value, length: length, **kwargs)
     end
   end
 
