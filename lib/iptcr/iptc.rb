@@ -93,6 +93,8 @@ module IPTCR
         case field.value
         when "\x1b%G"
           @encoding = Encoding::UTF_8
+        when "\x1b\xe2\x80\xa2A"
+          @encoding = Encoding::ISO_8859_1 # Latin 1
         else
           warn "IPTC: Unknown encoding: #{field.value.inspect}, using default #{encoding}"
         end
